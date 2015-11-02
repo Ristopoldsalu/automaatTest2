@@ -31,33 +31,40 @@ public class Calc {
 
     protected int pay(final int typeOfWorker,final int hoursWorked) {
 
-        int overtimeMultiplier = 0;
-        int overtimeHoursNeeded = 0;
-        int hourSalary = 0;
-        int heroBonus = 0;
         int totalSalary = 0;
 
         switch (typeOfWorker) {
             case JUNIOR:
-                overtimeMultiplier = JUNIOR_MULTIPLIER;
-                overtimeHoursNeeded = JUNIOR_OVERTIME_HOURS_NEEDED;
-                hourSalary = JUNIOR_HOUR_SALARY;
-                heroBonus = JUNIOR_HERO_BONUS;
+                totalSalary = calculateSalary(
+                        hoursWorked,
+                        JUNIOR_OVERTIME_HOURS_NEEDED,
+                        JUNIOR_MULTIPLIER,
+                        JUNIOR_HERO_BONUS,
+                        JUNIOR_HOUR_SALARY);
                 break;
             case SENIOR:
-                overtimeMultiplier = SENIOR_MULTIPLIER;
-                overtimeHoursNeeded = SENIOR_OVERTIME_HOURS_NEEDED;
-                hourSalary = SENIOR_HOUR_SALARY;
-                heroBonus = SENIOR_HERO_BONUS;
+                totalSalary = calculateSalary(
+                        hoursWorked,
+                        SENIOR_OVERTIME_HOURS_NEEDED,
+                        SENIOR_MULTIPLIER,
+                        SENIOR_HERO_BONUS,
+                        SENIOR_HOUR_SALARY);
                 break;
             case SPECIALIST:
-                overtimeMultiplier = SPECIALIST_MULTIPLIER;
-                overtimeHoursNeeded = SPECIALIST_OVERTIME_HOURS_NEEDED;
-                hourSalary = SPECIALIST_HOUR_SALARY;
-                heroBonus = SPECIALIST_HERO_BONUS;
+                totalSalary = calculateSalary(
+                        hoursWorked,
+                        SPECIALIST_OVERTIME_HOURS_NEEDED,
+                        SPECIALIST_MULTIPLIER,
+                        SPECIALIST_HERO_BONUS,
+                        SPECIALIST_HOUR_SALARY);
                 break;
         }
 
+        return totalSalary;
+    }
+
+    public int calculateSalary(int hoursWorked, int overtimeHoursNeeded, int overtimeMultiplier, int heroBonus, int hourSalary) {
+        int totalSalary = 0;
         if (hoursWorked > overtimeHoursNeeded) { // if longer than eight hours
             totalSalary = hourSalary * (hoursWorked - overtimeHoursNeeded) * overtimeMultiplier; // double pay
             totalSalary += hourSalary * overtimeHoursNeeded;
