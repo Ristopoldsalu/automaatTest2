@@ -41,4 +41,10 @@ public class CalcTest {
         assertEquals(45, calc.pay(Calc.SENIOR, 3), 0.0);
     }
 
+    @Test
+    public void shouldReturnSpecialistPay() {
+        Calc calc = new Calc();
+        assertEquals(66, calc.pay(Calc.SPECIALIST, 3), 0.0);
+    }
+
 }

@@ -26,7 +26,12 @@ public class Calc {
     //my crappy screen test
     public static void main(final String[] args) {
         Calc c = new Calc();
+        /*
         System.err.println(c.pay(SPECIALIST, 3) + " should be 66");
+        System.err.println(c.pay(SENIOR, 3) + " should be 45");
+        System.err.println(c.pay(JUNIOR, 3) + " should be 30");
+        System.err.println(c.pay(JUNIOR, 18) + " should be 280");
+        */
     }
 
     protected int pay(final int typeOfWorker,final int hoursWorked) {
